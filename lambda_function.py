@@ -7,7 +7,7 @@ from src.response_parser import parse_response
 from src.document_specific_processing import process_checkboxes
 from src.template_matching import match_template, log_matching_results
 from src.post_processing import post_process
-from config import BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, REGION_NAME
+from config import BUCKET, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION
 import boto3
 from botocore.exceptions import ClientError
 import logging
@@ -19,7 +19,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 s3_client = boto3.client('s3',
                          aws_access_key_id=AWS_ACCESS_KEY_ID,
                          aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-                         region_name=REGION_NAME)
+                         region_name=AWS_REGION)
 
 def save_intermediate_result(data, filename):
     """Save intermediate results directly to S3."""
@@ -60,6 +60,23 @@ def process_single_file(s3_file, file_index):
     logging.info(f"Processed file: {s3_file}")
     return final_result
 
+def upload_to_s3(file_path, bucket, object_name=None):
+    if object_name is None:
+        object_name = os.path.basename(file_path)
+
+    s3_client = boto3.client('s3',
+                             aws_access_key_id=AWS_ACCESS_KEY_ID,
+                             aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+                             region_name=AWS_REGION)
+
+    try:
+        s3_client.upload_file(file_path, bucket, object_name)
+        logging.info(f"File uploaded successfully to {bucket}/{object_name}")
+        return True
+    except ClientError as e:
+        logging.error(f"Error uploading file to S3: {e}")
+        return False
+    
 def save_result_to_s3(result, bucket, object_name):
     """Save the final result to S3."""
     try:
@@ -135,3 +152,46 @@ def lambda_handler(event, context):
     save_result_to_s3(combined_result, BUCKET, s3_result_object_name)
 
     return {'statusCode': 200, 'body': json.dumps('Document processed successfully.')}
+
+
+if __name__=="__main__":
+    event={
+        "Records": [
+            {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "us-east-1",
+            "eventTime": "2024-09-03T12:34:56.789Z",
+            "eventName": "ObjectCreated:Put",
+            "userIdentity": {
+                "principalId": "EXAMPLE"
+            },
+            "requestParameters": {
+                "sourceIPAddress": "192.0.2.0"
+            },
+            "responseElements": {
+                "x-amz-request-id": "C3D13FE58DE4C810",
+                "x-amz-id-2": "FMyUVURIvYygkXkhoO/U+pCH1ps6uYpUYZnN0kKo+m6zGLCzO5u2lgOi9dGeKmSdfu9a+AzU="
+            },
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "testConfigRule",
+                "bucket": {
+                "name": "starwarsbff",
+                "ownerIdentity": {
+                    "principalId": "EXAMPLE"
+                },
+                "arn": "arn:aws:s3:::starwarsbff"
+                },
+                "object": {
+                "key": "sample_gas_statement.pdf",
+                "size": 1024,
+                "eTag": "0123456789abcdef0123456789abcdef",
+                "sequencer": "0055AED6DCD90281E5"
+                }
+            }
+            }
+        ]
+        }
+    context={}
+    lambda_handler(event, context)

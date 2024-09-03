@@ -3,11 +3,11 @@ import os
 #AWS CONFIG
 AWS_ACCESS_KEY_ID = os.environ.get("KEY")
 AWS_SECRET_ACCESS_KEY = os.environ.get("VALUE")
+AWS_REGION = "us-east-1"
 
 # S3 Configuration
 BUCKET = "starwarsbff"
-S3_BUCKET = os.environ.get('S3_BUCKET')
-AWS_REGION = os.environ.get('REGION_NAME', 'us-east-1')
+S3_BUCKET = "starwarsbff"
 
 # Textract Configuration
 TEXTRACT_FEATURES = ["TABLES", "FORMS"]
