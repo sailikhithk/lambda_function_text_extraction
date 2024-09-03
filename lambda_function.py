@@ -1,4 +1,8 @@
 import os
+# Set PATH to include Poppler binaries from the layer
+poppler_path = "/opt/bin"
+os.environ['PATH'] = f"{poppler_path}:{os.environ['PATH']}"
+# Install the required packages
 import json
 from datetime import datetime
 from src.document_preparation import prepare_document

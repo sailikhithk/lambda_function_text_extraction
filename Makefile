@@ -1,5 +1,17 @@
 # Makefile for Textract Document Extraction Project on Windows
 
+## build docker
+docker build --no-cache -t lambda-python-packages .
+docker run --rm -v C:\Users\likki\Downloads\Github\lambda_function_text_extraction\out:/out --entrypoint "" lambda-python-packages /bin/sh -c "cp -r /lambda_package/* /out"
+
+# Navigate to the deployment package directory
+cd C:\Users\likki\Downloads\Github\Textract-Document-Extraction\python\deployment_package
+
+Get-ChildItem -Recurse -Directory -Filter "__pycache__" | Remove-Item -Recurse -Force
+
+# Zip the contents of 'out', 'src', 'templates', and 'lambda_function.py' into a deployment package
+Compress-Archive -Path .\out\*, .\lambda_function.py, .\config.py, .\src\*, .\templates\* -DestinationPath lambda_deployment_package.zip
+
 # Use Python and pip from the active virtual environment
 PYTHON := python  # Assuming 'python' is accessible in the PATH
 PIP := pip        # Use the active pip environment
@@ -98,3 +110,4 @@ Show-DirectoryTree -Path . -OutputFile $outputFilePath
 
 # Confirm completion
 Write-Output "Directory tree has been written to $outputFilePath"
+
