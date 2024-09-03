@@ -1,0 +1,39 @@
+# AWS SDK for Python
+boto3
+
+# PDF processing
+PyPDF2
+pdf2jpg
+
+# Data processing and analysis
+numpy
+pandas
+
+# Date parsing
+python-dateutil
+
+# Environment variable management
+python-dotenv
+
+# For potential HTTP requests
+requests
+
+# For potential image processing
+Pillow
+
+# For potential data visualization
+matplotlib
+
+# For potential advanced text processing
+nltk
+
+# For unit testing
+pytest
+
+# Rapid fuzzy string matching - a faster, more efficient alternative to fuzzywuzzy
+rapidfuzz
+
+# Fuzzy string matching - fuzzywuzzy with speedup using python-Levenshtein
+fuzzywuzzy[speedup]
+
+python-Levenshtein

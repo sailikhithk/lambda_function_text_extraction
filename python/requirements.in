@@ -1,0 +1,6 @@
+boto3
+pdf2jpg
+python-dotenv
+PyPDF2
+pillow
+rapidfuzz

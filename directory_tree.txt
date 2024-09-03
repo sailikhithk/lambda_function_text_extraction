@@ -1,0 +1,38 @@
++ pdf_pages
+  + sample_gas_statement.pdf_dir
+    |   0_sample_gas_statement.pdf.jpg
+    |   1_sample_gas_statement.pdf.jpg
+    |   2_sample_gas_statement.pdf.jpg
++ src
+  |   __init__.py
+  |   document_preparation.py
+  |   document_specific_processing.py
+  |   post_processing.py
+  |   response_parser.py
+  |   template_matching.py
+  |   textract_api.py
+  |   utils.py
++ templates
+  |   template.json
++ tests
+  |   __init__.py
+  |   test_document_preparation.py
+  |   test_document_specific_processing.py
+  |   test_post_processing.py
+  |   test_response_parser.py
+  |   test_template_matching.py
+  |   test_textract_api.py
+|   .env
+|   .gitignore
+|   config.py
+|   dev-requirements.in
+|   dev-requirements.txt
+|   directory_tree.txt
+|   LICENSE
+|   main.py
+|   Makefile
+|   README.md
+|   requirements.in
+|   requirements.txt
+|   sample_gas_statement.pdf
+|   setup.py

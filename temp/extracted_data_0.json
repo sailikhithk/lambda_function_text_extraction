@@ -1,0 +1,331 @@
+{
+  "key_value_pairs": {
+    "Price": "",
+    "Description": "",
+    "Value": "$0.00",
+    "Producer %": "100.00%",
+    "Settle Quantity": "8,488.93",
+    "Pressure Base:": "14.65 (W)",
+    "BA #:": "133053",
+    "For Questions Contact:": "TMS-CSR @ 1-877-672-1449 or TMS_CSR@TARGARESOURCES.COM",
+    "Contract Type:": "Fee - Actual Recovery",
+    "Production Date:": "Dec 1, 2023",
+    "Run Date:": "Jan 22, 2024 2:43:25 PM",
+    "Asset Name:": "Silver Oak II",
+    "Operator:": "USG PROPERTIES AUSTIN CHALK I, LLC",
+    "Meter #:": "204638058",
+    "Contract:": "053895",
+    "Total Producer Payment:": "-$4,692.92",
+    "Accounting Date:": "Dec 1, 2023",
+    "Plant BTU Factor:": "1.037938",
+    "Meter Name:": "COMSTOCK",
+    "Operator #:": "133053",
+    "Meter Split:": "100.00",
+    "Gas Buyer:": "",
+    "Attention:": "",
+    "Total": "84,316.09 62,551.22 62,276.16 $440.96",
+    "Function:": "0",
+    "Wellhead BTU": "1,308.33",
+    "USG": "PROPERTIES AUSTIN CHALK I, LLC",
+    "601": "TRAVIS STREET SUITE 1900",
+    "TPL SouthTex": "Processing CO LP",
+    "Cade Jackson @": "210-482-9288"
+  },
+  "tables": [
+    [
+      [
+        "",
+        "Mcf",
+        "MMBtu"
+      ],
+      [
+        "Gross Wellhead",
+        "10,927.72",
+        "14,297.09"
+      ],
+      [
+        "Net Delivered",
+        "10,927.72",
+        "14,297.09"
+      ],
+      [
+        "Plant Fuel",
+        "143.42",
+        "149.35"
+      ],
+      [
+        "Shrink",
+        "2,212.59",
+        "5,184.59"
+      ],
+      [
+        "Plant Condensate",
+        "13.94",
+        "62.75"
+      ],
+      [
+        "Residue Theoretical",
+        "8,557.77",
+        "8,900.40"
+      ],
+      [
+        "Residue Production",
+        "8,322.54",
+        "8,638.28"
+      ],
+      [
+        "Residue Sale",
+        "8,179.07",
+        "8,488.93"
+      ],
+      [
+        "Wellhead BTU",
+        "",
+        ""
+      ],
+      [
+        "1,308.33",
+        "",
+        ""
+      ]
+    ],
+    [
+      [
+        "Description",
+        "Settle Unit",
+        "Theoretical Gallons",
+        "Allocated Quantity",
+        "Producer %",
+        "Settle Quantity",
+        "Price",
+        "Value"
+      ],
+      [
+        "Ethane",
+        "gal",
+        "44,885.60",
+        "26,298.86",
+        "100.00%",
+        "26,298.86",
+        "",
+        "$0.00"
+      ],
+      [
+        "Propane",
+        "gal",
+        "24,617.96",
+        "22,966.58",
+        "100.00%",
+        "22,966.58",
+        "",
+        "$0.00"
+      ],
+      [
+        "Isobutane",
+        "gal",
+        "3,042.28",
+        "2,875.97",
+        "100.00%",
+        "2,875.97",
+        "",
+        "$0.00"
+      ],
+      [
+        "N Butane",
+        "gal",
+        "7,258.19",
+        "6,805.88",
+        "100.00%",
+        "6,805.88",
+        "",
+        "$0.00"
+      ],
+      [
+        "N Gasoline",
+        "gal",
+        "4,512.06",
+        "3,053.81",
+        "100.00%",
+        "3,053.81",
+        "",
+        "$0.00"
+      ],
+      [
+        "Condensate",
+        "gal",
+        "",
+        "550.12",
+        "50.00%",
+        "275.06",
+        "$1.603155",
+        "$440.96"
+      ],
+      [
+        "Total",
+        "",
+        "84,316.09",
+        "62,551.22",
+        "",
+        "62,276.16",
+        "",
+        "$440.96"
+      ]
+    ],
+    [
+      [
+        "",
+        "GPM",
+        "Mol"
+      ],
+      [
+        "c1",
+        "0.0000",
+        "70.1970"
+      ],
+      [
+        "co2",
+        "0.0000",
+        "1.8030"
+      ],
+      [
+        "c2",
+        "4.1075",
+        "15.3810"
+      ],
+      [
+        "c3",
+        "2.2528",
+        "8.1890"
+      ],
+      [
+        "ic4",
+        "0.2784",
+        "0.8520"
+      ],
+      [
+        "nc4",
+        "0.6642",
+        "2.1100"
+      ],
+      [
+        "ic5",
+        "0.1479",
+        "0.4050"
+      ],
+      [
+        "nc5",
+        "0.1473",
+        "0.4070"
+      ],
+      [
+        "c6",
+        "0.1177",
+        "0.2700"
+      ],
+      [
+        "nit",
+        "0.0000",
+        "0.3790"
+      ],
+      [
+        "oxy",
+        "0.0000",
+        "0.0070"
+      ],
+      [
+        "Total",
+        "7.716",
+        "100.00"
+      ]
+    ],
+    [
+      [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "Description",
+        "Settle Unit",
+        "Allocated Quantity",
+        "Producer %",
+        "Settle Quantity",
+        "Price",
+        "Value"
+      ],
+      [
+        "Residue (TIK)",
+        "mmbtu",
+        "8,488.93",
+        "100.00%",
+        "8,488.93",
+        "",
+        "$0.00"
+      ],
+      [
+        "Total",
+        "",
+        "8,488.93",
+        "",
+        "8,488.93",
+        "",
+        "$0.00"
+      ]
+    ],
+    [
+      [
+        "Description",
+        "Fee Unit",
+        "Fee Quantity",
+        "Fee Rate",
+        "Fee Value"
+      ],
+      [
+        "Carbon Dioxide",
+        "mcf",
+        "10,927.72",
+        "0.084872",
+        "$927.46"
+      ],
+      [
+        "Electric",
+        "mmbtu",
+        "14,297.09",
+        "0.050539",
+        "$722.56"
+      ],
+      [
+        "Gathering",
+        "mmbtu",
+        "14,297.09",
+        "0.106090",
+        "$1,516.78"
+      ],
+      [
+        "Processing",
+        "mmbtu",
+        "14,297.09",
+        "0.106090",
+        "$1,516.78"
+      ],
+      [
+        "Residue Sales",
+        "mmbtu",
+        "8,488.93",
+        "0.053045",
+        "$450.30"
+      ],
+      [
+        "Total",
+        "",
+        "",
+        "",
+        "$5,133.88"
+      ]
+    ]
+  ]
+}

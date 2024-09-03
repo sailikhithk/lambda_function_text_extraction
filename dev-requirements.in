@@ -1,0 +1,17 @@
+-r requirements.in
+
+# Testing
+pytest
+pytest-cov
+
+# Linting
+flake8
+
+# Formatting
+black
+
+# Type checking
+mypy
+
+# Documentation
+sphinx

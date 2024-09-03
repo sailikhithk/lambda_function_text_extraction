@@ -1,0 +1,21 @@
+{
+  "Statement": {
+    "BA #": "133053",
+    "Operator #": "USG PROPERTIES AUSTIN CHALK I, LLC",
+    "Production Date": "Dec 1, 2023",
+    "Function": 0,
+    "Operator": "USG PROPERTIES AUSTIN CHALK I, LLC",
+    "Pressure Base": "14.65 (W)",
+    "Contract": "Fee - Actual Recovery",
+    "Meter Split": 1.0,
+    "Contract Type": "Fee - Actual Recovery"
+  },
+  "Physical Information": {
+    "Wellhead BTU": 1308.33
+  },
+  "Analysis": {},
+  "Fees": {},
+  "Settlement Information": {},
+  "Total Producer Payment": -4692.92,
+  "Contact Information": {}
+}
