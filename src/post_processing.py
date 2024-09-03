@@ -1,9 +1,16 @@
-# File: src/post_processing.py
-
 import json
 from datetime import datetime
+import logging
+import watchtower
+import os
+
+# Set up CloudWatch logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.addHandler(watchtower.CloudWatchLogHandler())
 
 def post_process(matched_data):
+    logger.info("Starting post-processing of matched data")
     final_json = {}
 
     for key, value in matched_data.items():
@@ -14,6 +21,7 @@ def post_process(matched_data):
         else:
             final_json[key] = process_value(key, value)
 
+    logger.info("Post-processing completed")
     return final_json
 
 def process_section(section):
@@ -26,7 +34,7 @@ def process_section(section):
     return processed_section
 
 def process_table(table):
-    return [item.dict() if hasattr(item, 'dict') else item for item in table]
+    return [item if isinstance(item, dict) else {"value": item} for item in table]
 
 def process_value(key, value):
     if isinstance(value, str):
@@ -40,6 +48,7 @@ def process_date(value):
     try:
         return datetime.strptime(value, "%b %d, %Y").strftime("%Y-%m-%d")
     except ValueError:
+        logger.warning(f"Could not parse date: {value}")
         return value
 
 def process_number(value):
@@ -54,6 +63,7 @@ def int_correction(value):
     try:
         return int(float(value))
     except ValueError:
+        logger.warning(f"Could not convert to int: {value}")
         return value
 
 def float_correction(value):
@@ -68,6 +78,7 @@ def float_correction(value):
         try:
             return float(value)
         except ValueError:
+            logger.warning(f"Could not convert to float: {value}")
             return value
     return value
 

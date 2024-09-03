@@ -1,5 +1,5 @@
 # Ignore deployment package output
-/python/deployment_package/out/
+out/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

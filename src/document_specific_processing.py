@@ -1,6 +1,15 @@
+import logging
+import watchtower
+import os
 from src.utils import find_word_boundingbox, find_Key_value_inrange
 
+# Set up CloudWatch logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.addHandler(watchtower.CloudWatchLogHandler())
+
 def process_checkboxes(parsed_kv, response):
+    logger.info("Starting checkbox processing")
     checkbox_groups = {}
     words_to_find = ['Silver', 'Ethane', 'Residue', 'Production', 'Sale', 'Asset', 'Gasoline', 'Gas']
 
@@ -14,6 +23,7 @@ def process_checkboxes(parsed_kv, response):
             dict_group = find_Key_value_inrange(response, top, left, height, no_line_below=5, no_line_above=0, right=1, margin=0.02)
             dict_group = {x.rstrip(): v.rstrip() for x, v in dict_group.items()}
             checkbox_groups[word] = dict_group
+            logger.debug(f"Found checkbox group for '{word}': {dict_group}")
 
     # Remove checkbox groups from parsed_kv
     for group in checkbox_groups.values():
@@ -27,6 +37,11 @@ def process_checkboxes(parsed_kv, response):
             check_box_group_final[key] = check_box_group_final[key][0]
         if isinstance(check_box_group_final[key], str) and check_box_group_final[key].endswith(';'):
             check_box_group_final[key] = check_box_group_final[key][:-1]
+        logger.debug(f"Processed checkbox group '{key}': {check_box_group_final[key]}")
 
     # Combine processed checkboxes with other key-value pairs
-    return {**parsed_kv, **check_box_group_final}
+    result = {**parsed_kv, **check_box_group_final}
+    logger.info("Checkbox processing completed")
+    return result
+
+logger.info("Document-specific processing module loaded successfully")

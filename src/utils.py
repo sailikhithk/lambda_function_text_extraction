@@ -1,3 +1,12 @@
+import logging
+import watchtower
+import os
+
+# Set up CloudWatch logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.addHandler(watchtower.CloudWatchLogHandler())
+
 def get_text(result, blocks_map):
     text = ''
     if 'Relationships' in result:
@@ -63,3 +72,6 @@ def find_Key_value_inrange(response, top, left, word_height, no_line_below, no_l
                 kv_pair[key] = val
     
     return kv_pair
+
+# Add some logging to help with debugging
+logger.info("Utils module loaded successfully")

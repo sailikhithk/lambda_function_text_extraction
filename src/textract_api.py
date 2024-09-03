@@ -1,14 +1,27 @@
 import boto3
 from botocore.exceptions import ClientError
-from config import AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, REGION_NAME
+import os
+import logging
+import watchtower
+
+# Set up CloudWatch logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.addHandler(watchtower.CloudWatchLogHandler())
+
+# Initialize Textract client
+textract = boto3.client('textract', region_name=os.getenv('REGION_NAME'))
 
 def analyze_document(jpg_file, bucket):
-    textract = boto3.client('textract',
-                            aws_access_key_id=AWS_ACCESS_KEY_ID,
-                            aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-                            region_name=REGION_NAME)
-
+    """
+    Analyze a document using Amazon Textract.
+    
+    :param jpg_file: S3 key of the JPG file to analyze
+    :param bucket: S3 bucket name
+    :return: Textract response or None if an error occurs
+    """
     try:
+        logger.info(f"Analyzing document: s3://{bucket}/{jpg_file}")
         response = textract.analyze_document(
             Document={
                 'S3Object': {
@@ -18,7 +31,11 @@ def analyze_document(jpg_file, bucket):
             },
             FeatureTypes=["TABLES", "FORMS"]
         )
+        logger.info(f"Document analysis completed for: s3://{bucket}/{jpg_file}")
         return response
     except ClientError as e:
-        print(f"An error occurred: {e}")
+        logger.error(f"An error occurred while analyzing document s3://{bucket}/{jpg_file}: {e}")
+        return None
+    except Exception as e:
+        logger.error(f"An unexpected error occurred while analyzing document s3://{bucket}/{jpg_file}: {e}")
         return None
